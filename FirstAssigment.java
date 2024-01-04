@@ -49,6 +49,9 @@ public class FirstAssigment {
 			case (48):
 				FourtyEighth();
 				break;
+			case (49):
+				FourtyNineth();
+				break;
 			default:
 				if (question == 0) {
 					System.out.println("Finishing process...");
@@ -251,7 +254,6 @@ public class FirstAssigment {
 		
 	}
 	
-
 	public static void Seventh() {
 		/*
 		Description: 
@@ -284,8 +286,7 @@ public class FirstAssigment {
 		}
 		
 	}
-	
-	
+		
 	public static void Eighth() {
 		/*
 		Description: 
@@ -431,4 +432,22 @@ public class FirstAssigment {
 		System.out.printf("The amount of meat needed is: %.2fKg\n\n", (double)meat/1000);
 		
 	}
+
+	public static void FourtyNineth() {
+		/*
+		Description: 
+		- Alguns países medem temperaturas em graus Celsius, e outros em graus Fahrenheit.
+		  Faça um algoritmo para ler uma temperatura Celsius e imprimi-la em Fahrenheit
+		  (pesquise como fazer este tipo de conversão).
+		- Some countries measure temperatures in Celcius and some in Fahrenheit. Write an
+		  algorithm to read the temperature in Celcius and print it in Fahrenheit.
+		*/
+		System.out.println("Insert the temperature in Celcius: ");
+		double celcius = sc.nextDouble();
+				
+		double fahrenheit = 1.8*celcius + 32;
+		
+		System.out.printf("The temperature in Fahrenheit is: %.1f\n\n", fahrenheit);
+	}
+	
 }
