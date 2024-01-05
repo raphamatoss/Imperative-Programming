@@ -58,6 +58,21 @@ public class FirstAssigment {
 			case (15):
 				Fifteenth();
 				break;
+			case (16):
+				Sixteenth();
+				break;
+			case (17):
+				Seventeenth();
+				break;
+			case (18):
+				Eighteenth();
+				break;
+			case (19):
+				Nineteenth();
+				break;
+			case (20):
+				Twelveth();
+				break;
 			case (48):
 				FourtyEighth();
 				break;
@@ -570,6 +585,141 @@ public class FirstAssigment {
 		double area = length*width;
 		
 		System.out.printf("The area of the terrain is %.2f\n\n", area);
+	}
+	
+	public static void Sixteenth() {
+		/*
+		Description: 
+		- Faça um algoritmo para calcular quantas ferraduras são necessárias para equipar
+		  todos os cavalos comprados para um haras.
+		- Write an algorithm to calculate how many horseshoes are required to equip all 
+		  bought horses for a stud farm.
+		*/
+		System.out.println("How many horses are getting bought? ");
+		int horses = sc.nextInt();
+		
+		System.out.println(horses*4 + " horseshoes are required.\n");
+	}
+	
+	public static void Seventeenth() {
+		/*
+		Description: 
+		- A padaria “Pão Bom” vende certa quantidade de pães franceses e uma quantidade de
+		  broas a cada dia. Cada pãozinho custa R$ 0,12 e a broa custa R$ 1,50. Ao final do dia,
+		  o dono quer saber quanto arrecadou com a venda dos pães e broas (juntos), e quanto'
+		  deve guardar numa conta de poupança (10% do total arrecadado). Você foi contratado
+  	 	  para fazer os cálculos para o dono. Com base nestes fatos, faça um algoritmo para ler
+		  as quantidades de pães e de broas, e depois calcular os dados solicitados.
+		- The "Pão Bom" bakery sells certain amounts of breads and 'broas' each day. Each bread cost
+		  R$ 0.12 and a 'broa' cost R$ 1.50. At the end of the day, the owner wants to know his daily 
+		  earnings and how much he must save for his saving account(10% of his gains). You were hired
+		  to calculate it. According to this data, write an algorithm to read the amount of bread and
+		  'broas' and after that calculate the required informatio.
+		*/
+		System.out.println("How many breads were sold? ");
+		int breads = sc.nextInt();
+		System.out.println("How many 'broas' were sold? ");
+		int broas = sc.nextInt();
+		
+		double gains = breads*0.12 + broas*1.50;
+		double savings = gains*0.1;
+		
+		System.out.println("The total earnings were: " + gains);
+		System.out.println("The total saved was: " + savings +"\n");
+		
+	}
+	
+	public static void Eighteenth() {
+		/*
+		Description: 
+		- Faça um programa que solicite ao usuário para digitar valores numéricos inteiros
+		  positivos. Encerre a entrada de dados quando for digitado um número negativo ou
+		  zero. Calcule a média dos números positivos digitados.
+		- Write a program which asks a user to type integer positive numeric values. Finish
+		  the input when a negative number or zero is typed. Afterwards, calculate the media 
+		  of the positive numbers. 
+		*/
+		
+		double number, aux1, aux2, media;
+		aux1 = 0; // sum the positive numbers
+		aux2 = 0; // sum how many numbers were inserted
+		
+		
+		System.out.println("Type a number: ");
+		number = sc.nextDouble();
+		
+		while (number > 0) {
+			aux1 += number;
+			aux2 += 1;
+			System.out.println("Type a number: ");
+			number = sc.nextDouble();
+		}
+		
+		media = aux1/aux2;
+		
+		System.out.println("The media is: " + media + "\n");
+	}
+	
+	public static void Nineteenth() {   // return to this question later when I adquire OOP knowledge
+		/*
+		Description: 
+		- Uma determinada empresa armazena para cada funcionário (10 no total) uma ficha
+		  contendo o código, o número de horas trabalhadas e o seu no de dependentes.
+		  Considerando que: A empresa paga 15 reais por hora e 40 reais por dependentes.
+		  Sobre o salário são feitos descontos de 8,5% para o INSS e 5% para IR. Faça um
+		  programa para ler o código, número de horas trabalhadas e número de dependentes
+		  de cada funcionário. Após a leitura, escreva qual o código, os valores descontados
+		  para cada tipo de imposto e finalmente o salário líquido de cada um dos funcionários.
+		- A company keeps a file(10 in total) containing a code, the total worked hours and the 
+		  number of dependents of each employee. Considering the company pays R$15 an hour and 
+		  R$ for its dependents. There are made discounts on the employee salary, 8% to the INSS 
+		  and 5% to the IR. Write a program to read the code, total worked hours and the number 
+		  of dependents of each employee. Afterwards, write its code, the discounted values to
+		  each tax and finally the salary of each employee.
+		*/
+		
+		/*
+		Employees employee = new Employees();
+		employee.code = 011;
+		
+		
+		for (int i = 0; i < 10; i++) {
+			System.out.println("Insert the code, the worked hours and the dependents of an employee: ");
+			obj[i] = new Employees(sc.nextInt(), sc.nextInt(), sc.nextInt());
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			System.out.println(obj[i]);
+			obj[i].display();
+		}
+		*/
+		
+	}
+	
+	public static void Twentyth() {
+		/*
+		Description: 
+		- Em uma pesquisa de campo, uma editora solicitou os seguintes dados para os
+		  entrevistados: sexo, idade e quantidade de livros que leu no ano atual. Faça um
+		  programa que leia os dados digitados pelo usuário, sendo que deverão ser solicitados
+ 		  dados até que a idade digitada seja um valor negativo.
+		  Depois, calcule e imprima:
+  			 a) A quantidade total de livros lidos pelos entrevistados menores de 10 anos.
+  			 b) A quantidade de mulheres que leram 5 livros ou mais.
+  			 c) A média de idade dos homens que leram menos que 5 livros.
+  			 d) O percentual de pessoas que não leram livros.
+		- A publisher during a research required the following data to the interviewed: 
+		  gender, age and the number of read books in the current year. Write an algorithm to
+		  read a user's input data, which must be go on until the inserted age is a negative number.
+		  Afterwards, calculate and print: 
+		    a) The total number of read books by the interwiewed bellow the age of 10.
+		    b) The total number of women who read 5 or more books.
+		    c) The age range of the men who read less than 5 books.
+		    d) The percentage of people who haven't read any books.
+		*/
+		
+		
+		
 	}
 	
 	public static void FourtyEighth() {
