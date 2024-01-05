@@ -46,6 +46,18 @@ public class FirstAssigment {
 			case (11):
 				Eleventh();
 				break;
+			case (12):
+				Twelveth();
+				break;
+			case (13):
+				Thirteenth();
+				break;
+			case (14):
+				Fourteenth();
+				break;
+			case (15):
+				Fifteenth();
+				break;
 			case (48):
 				FourtyEighth();
 				break;
@@ -384,6 +396,7 @@ public class FirstAssigment {
 	}
 	
 	public static void Eleventh() {
+
 		/*
 		Description: 
 		- Faça um algoritmo que receba um valor que foi depositado, a taxa de juros anual e o
@@ -403,6 +416,160 @@ public class FirstAssigment {
 		double finalValue = initialDeposit*Math.pow(1+interestRate, years);
 		
 		System.out.printf("The final value is: %.2f\n\n", finalValue);
+	}
+	
+	public static void Twelveth() {
+		/*
+		Description: 
+		- No description due to a table required, the original question can be visualized on its pdf. 
+		*/
+		System.out.println("Insert the balance: ");
+		double balance = sc.nextDouble();
+		
+		double credit;
+		
+		if (balance > 2000) {
+			credit = balance*0.2;
+		}
+		else if (balance > 4000) {
+			credit = balance*0.3;
+		}
+		else if (balance > 6000) {
+			credit = balance*0.4;
+		}
+		else {
+			credit = 0;
+		}
+		
+		System.out.printf("The balance is: %.2f\n", balance);
+		System.out.printf("The credit is: %.2f\n\n", credit);
+		
+	}
+
+	public static void Thirteenth() {   // return and redo this question later when i adquire OOP knowledges, it seems a good one to practice.
+		/* 
+		Description: 
+		- No description due to a table required, the original question can be visualized on its pdf. 
+		*/
+		System.out.println("Insert the product's code: ");
+		int code = sc.nextInt();
+		System.out.println("How many? ");
+		int amount = sc.nextInt();
+		
+		double finalPrice = 0;
+		
+		int product1 = 1001; // R$ 5,32
+		int product2 = 1324; // R$ 6,45
+		int product3 = 6548; // R$ 2,37
+		int product4 = 987;  // R$ 5,32
+		int product5 = 7623; // R$ 6,45
+		
+		switch(code) {
+		case(1001):
+			finalPrice = 5.32 * amount;
+			break;
+		case(1324):
+			finalPrice = 6.45 * amount;
+			break;
+		case(6548):
+			finalPrice = 2.37 * amount;
+			break;
+		case(987):
+			finalPrice = 5.32 * amount;
+			break;
+		case(7623):
+			finalPrice = 6.45 * amount;
+			break;
+		default:
+			finalPrice = 0;
+			break;
+		}
+		
+		if (finalPrice != 0) {
+			System.out.printf("The final price is: %.2f\n\n", finalPrice);
+		}
+		else {
+			System.out.println("Invalid code, try again.\n");
+			Thirteenth();
+		}
+		
+	}
+	
+	public static void Fourteenth() {
+		/*
+		Description: 
+		- Ler um número inteiro, e verificar se o número corresponde a um mês válido no
+		  calendário e escrever o nome do mês, senão escrever uma mensagem ‘Mês Inválido’.
+		- Read an integer number, verify if the number corresponds to a valid month at the
+		  calendar and write the name of the month, if not, write "Invalid Month" message.
+		*/
+		System.out.println("Insert a number: ");
+		int number = sc.nextInt();
+		
+		String month = "january"; // standard attribution, used only to initialize the variable
+		
+		if (number >= 1 && number <= 12) {
+			switch(number) {
+			case(1):
+				month = "January";
+				break;
+			case(2):
+				month = "February";
+				break;
+			case(3):
+				month = "March";
+				break;
+			case(4):
+				month = "April";
+				break;
+			case(5):
+				month = "May";
+				break;
+			case(6):
+				month = "June";
+				break;
+			case(7):
+				month = "July";
+				break;
+			case(8):
+				month = "August";
+				break;
+			case(9):
+				month = "September";
+				break;
+			case(10):
+				month = "October";
+				break;
+			case(11):
+				month = "November";
+				break;
+			case(12):
+				month = "December";
+				break;
+			}
+			System.out.println("Month: " + month + "\n");
+		}
+		else {
+			System.out.println("Invalid month.\n");
+		}
+	}
+	
+	public static void Fifteenth() {
+		/*
+		Description:
+		- A imobiliária “Imobiliares” vende apenas terrenos retangulares. Faça um algoritmo
+		  para ler as dimensões de um terreno e depois exibir a área do terreno.
+		- The Estate Agency "Imobiliares" sells only retangular terrains. Build an algorithm
+		  to read the dimensions of a terrain then show the area of it.
+		*/
+		System.out.println("Insert the length of the terrain: ");
+		double length = sc.nextDouble();
+		System.out.println("Insert the width of the terrain: ");
+		double width = sc.nextDouble();
+		
+		double area = length*width;
+		
+		System.out.printf("The area of the terrain is %.2f\n\n", area);
 	}
 	
 	public static void FourtyEighth() {
