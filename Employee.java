@@ -1,4 +1,4 @@
-
+// class used in the 19th question
 public class Employee {
 	int code;
 	int hours;
