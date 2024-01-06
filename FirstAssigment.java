@@ -1,5 +1,6 @@
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class FirstAssigment {
 	static Scanner sc = new Scanner(System.in);
@@ -71,7 +72,7 @@ public class FirstAssigment {
 				Nineteenth();
 				break;
 			case (20):
-				Twelveth();
+				Twentyth();
 				break;
 			case (48):
 				FourtyEighth();
@@ -660,11 +661,11 @@ public class FirstAssigment {
 		System.out.println("The media is: " + media + "\n");
 	}
 	
-	public static void Nineteenth() {   // return to this question later when I adquire OOP knowledge
+	public static void Nineteenth() {   // return in case i need to redo the exercise later only in the imperative programming 
 		/*
 		Description: 
 		- Uma determinada empresa armazena para cada funcionário (10 no total) uma ficha
-		  contendo o código, o número de horas trabalhadas e o seu no de dependentes.
+		  contendo o código, o número de horas trabalhadas e o seu numero de dependentes.
 		  Considerando que: A empresa paga 15 reais por hora e 40 reais por dependentes.
 		  Sobre o salário são feitos descontos de 8,5% para o INSS e 5% para IR. Faça um
 		  programa para ler o código, número de horas trabalhadas e número de dependentes
@@ -675,28 +676,39 @@ public class FirstAssigment {
 		  R$ for its dependents. There are made discounts on the employee salary, 8% to the INSS 
 		  and 5% to the IR. Write a program to read the code, total worked hours and the number 
 		  of dependents of each employee. Afterwards, write its code, the discounted values to
-		  each tax and finally the salary of each employee.
+		  each tax and finally the final salary of each employee.
 		*/
+
+		ArrayList<Employee> allEmployees = new ArrayList<Employee>();
 		
-		/*
-		Employees employee = new Employees();
-		employee.code = 011;
-		
-		
-		for (int i = 0; i < 10; i++) {
-			System.out.println("Insert the code, the worked hours and the dependents of an employee: ");
-			obj[i] = new Employees(sc.nextInt(), sc.nextInt(), sc.nextInt());
+		for (int i = 0; i < 2; i++) {
+			System.out.printf("Insert the code of the %dst employee: \n", i+1);
+			int employeeCode = sc.nextInt();
+			System.out.println("Insert its worked hours: ");
+			int employeeHours = sc.nextInt();
+			System.out.println("Insert the number of its dependents: ");
+			int employeeDependents = sc.nextInt();
+			
+			Employee emp = new Employee();
+			
+			emp.code = employeeCode;
+			emp.hours = employeeHours;
+			emp.dependents = employeeDependents;
+			emp.salary = 15*4*emp.hours;
+			emp.inss = emp.salary*0.085;
+			emp.ir = emp.salary*0.05;
+			emp.finalSalary = emp.salary - emp.inss - emp.ir;
+			
+			allEmployees.add(emp);
 		}
 		
-		for (int i = 0; i < 10; i++) {
-			System.out.println(obj[i]);
-			obj[i].display();
+		for (Employee i : allEmployees) {
+			System.out.println(i);
 		}
-		*/
 		
 	}
 	
-	public static void Twentyth() {
+	public static void Twentyth() {  // return here later
 		/*
 		Description: 
 		- Em uma pesquisa de campo, uma editora solicitou os seguintes dados para os
@@ -718,8 +730,70 @@ public class FirstAssigment {
 		    d) The percentage of people who haven't read any books.
 		*/
 		
+		ArrayList<Interviewed> allInterviewed = new ArrayList<Interviewed>();
 		
+		Interviewed person = new Interviewed();
+		double control, totalBooksLessThan10Years, womenWhoReadMoreThan5Books, menWhoReadLessThan5Books, mediaOfMensAgeWhoReadLessThan5Books, noReaders;
+		totalBooksLessThan10Years = 0;
+		womenWhoReadMoreThan5Books = 0;
+		menWhoReadLessThan5Books = 0;
+		mediaOfMensAgeWhoReadLessThan5Books = 0;
+		noReaders = 0;
 		
+		do {
+			System.out.println("Insert the gender of the interviewed(m/f): ");
+			char gender = sc.next().charAt(0);
+			Character.toLowerCase(gender);
+			System.out.println("Insert the age of the interviewed: ");
+			int age = sc.nextInt();
+			System.out.println("Insert the amount of read books by the interviewed: ");
+			int books = sc.nextInt();
+			
+			person.gender = gender;
+			person.age = age;
+			person.books = books;
+			
+			allInterviewed.add(person);
+			
+			System.out.println("Would you like to interview another person? If yes, insert a number greater than 0, if not, insert a number less than 0. ");
+			control = sc.nextInt();
+		} while (control > 0);
+		
+		for (Interviewed i : allInterviewed) {
+			if (i.age < 10) {
+				totalBooksLessThan10Years += 1;
+			}
+			
+			if (i.gender == 'f' && i.books >= 5) {
+				womenWhoReadMoreThan5Books += 1;
+			}
+
+			if (i.gender == 'm' && i.books < 5) {
+				menWhoReadLessThan5Books += 1;
+				mediaOfMensAgeWhoReadLessThan5Books += i.age;
+			}
+			
+			if (i.books == 0) {
+				noReaders += 1;
+			}
+		}
+		
+		/* the following conditional prevents the "Not a number" output in case there is no man who read less than 5 books, cause if that is true
+		there would be 0 divided by 0, which is mathematically impossible. */
+		if (menWhoReadLessThan5Books == 0) {
+			mediaOfMensAgeWhoReadLessThan5Books = 0;
+		}
+		else {
+			mediaOfMensAgeWhoReadLessThan5Books = mediaOfMensAgeWhoReadLessThan5Books/menWhoReadLessThan5Books;
+		}
+		
+		// calculates the percentage of no readers.
+		noReaders = (noReaders*100)/allInterviewed.size();
+		
+		System.out.println("The total number of books read by interviewed younger than 10 years is: " + totalBooksLessThan10Years);
+		System.out.println("The total number of women who read 5 or more books is: " + womenWhoReadMoreThan5Books);
+		System.out.println("The age range of men who read less than 5 books is: " + mediaOfMensAgeWhoReadLessThan5Books);
+		System.out.println("The percentage of people who read no books is: " + noReaders);
 	}
 	
 	public static void FourtyEighth() {
