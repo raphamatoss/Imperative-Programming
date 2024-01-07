@@ -2,6 +2,10 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import UsedClasses.Employee;
+import UsedClasses.Theatre;
+import UsedClasses.Interviewed;
+
 public class FirstAssigment {
 	static Scanner sc = new Scanner(System.in);
 
@@ -72,7 +76,10 @@ public class FirstAssigment {
 				Nineteenth();
 				break;
 			case (20):
-				Twentyth();
+				Twentieth();
+				break;
+			case (21):
+				TwentyFirst();
 				break;
 			case (48):
 				FourtyEighth();
@@ -708,7 +715,7 @@ public class FirstAssigment {
 		
 	}
 	
-	public static void Twentyth() {  // return here later
+	public static void Twentieth() {  // return here later
 		/*
 		Description: 
 		- Em uma pesquisa de campo, uma editora solicitou os seguintes dados para os
@@ -794,6 +801,97 @@ public class FirstAssigment {
 		System.out.println("The total number of women who read 5 or more books is: " + womenWhoReadMoreThan5Books);
 		System.out.println("The age range of men who read less than 5 books is: " + mediaOfMensAgeWhoReadLessThan5Books);
 		System.out.println("The percentage of people who read no books is: " + noReaders);
+	}
+	
+	public static void TwentyFirst() {
+		/*
+		Description: 
+		- Foi realizada uma pesquisa com 200 pessoas que assistiram uma peça de teatro, em
+  		  relação a sua opinião sobre a mesma. Cada espectador respondeu a um questionário
+   		  que solicitava os seguintes dados:
+				idade da pessoa;
+				o identificador da pessoa;
+				opinião em relação à peça(de 0 a 10).
+		  Faça um programa que, a partir destes dados, calcule e imprima:
+				a.A quantidade de respostas 10.
+				b.A média de idade das pessoas que responderam o questionário.
+				c.A percentagem de pessoas que responderam 5 ou menos para a opinião da peça.
+				d.O identificador da pessoa mais velha.
+		  * Considere que a maior idade não é repetida. 
+		- A survey was carried out with 200 people who watched a theatre play, in
+  		  regarding their opinion on it. Each viewer answered a questionnaire
+   		  which requested the following data:
+				age of the person;
+				the person's identifier;
+				its opinion on the play (from 0 to 10).
+		  Write a program that, based on this data, calculates and prints:
+				a.The number of people who rated 10.
+				b.The age range of the people who answered the questionnaire.
+				c.The percentage of people who rated 5 or less to the play.
+				d.The identifier of the oldest person.
+		  * Consider that the oldest age is not repeated.
+		*/
+		ArrayList<Theatre> allInterviewed = new ArrayList<Theatre>();
+	
+		int answersTen = 0;
+		double ageMedia = 0;
+		double fiveOrLess = 0;
+		int olderIdentifier = 0;
+		
+		for (int i = 0; i < 2; i++) {
+			System.out.printf("Insert the age of the %dst interviewed: ", i+1);
+			int age = sc.nextInt();
+			System.out.printf("Insert the identifier of the interviewed: ");
+			int identifier = sc.nextInt();
+			System.out.printf("Insert the opinion rate of the interviewed(0-10): ");
+			int rate = sc.nextInt();
+			System.out.println(); // used only for styling reasons 
+			
+			Theatre interviewed = new Theatre();
+			interviewed.age = age;
+			interviewed.identifier = identifier;
+			interviewed.opinionRate = rate;
+			
+			allInterviewed.add(interviewed);
+		}
+		
+		for (int i = 0; i < allInterviewed.size(); i++) {
+			ageMedia += allInterviewed.get(i).age; // sum all the interviewed ages
+			
+			if (allInterviewed.get(i).opinionRate == 10) {  // counts the number of interviewed who rated 10
+				answersTen += 1;
+			}
+			
+			if (allInterviewed.get(i).opinionRate <= 5) { // counts the number of interviewed who rated 5 or less
+				fiveOrLess += 1;
+			}
+			
+			if (i == 0) { 
+				olderIdentifier = allInterviewed.get(i).identifier;
+			}
+			else {
+				if (allInterviewed.get(i).age > allInterviewed.get(i-1).age) { // if the 
+					olderIdentifier = allInterviewed.get(i).identifier;
+				}
+			}
+		}
+		
+		ageMedia = ageMedia/allInterviewed.size();
+		fiveOrLess = (fiveOrLess*100)/allInterviewed.size();
+		
+		System.out.printf("The amount of people who rated 10 is: %d\n", answersTen);
+		System.out.printf("The age range of the participants is: %.1f\n", ageMedia);
+		System.out.printf("The percentage of people who rated 5 or less is: %.1f%%\n", fiveOrLess);
+		System.out.printf("The older identifier is: %d\n\n", olderIdentifier);
+		
+	}
+	
+	public static void TwentySecond() {
+		
+	}
+	
+	public static void TwentyThird () {
+		
 	}
 	
 	public static void FourtyEighth() {
