@@ -887,7 +887,17 @@ public class FirstAssigment {
 	}
 	
 	public static void TwentySecond() {
-		
+		/*
+		Description: 
+		- Foi feita uma pesquisa para saber o perfil dos alunos que cursam o ginásio de uma
+		  determinada escola. Cada aluno fornecia a sua série (primeira-1, segunda-2, terceira-3 
+		  ou quarta-4), quantos livros liam por mês e se gostavam de fazer redação (Sim-1 ou 
+		  Não-0). Fazer um programa que leia os dados, calcule e imprima:
+			  A quantidade de alunos que está na terceira série;
+  			  A maior quantidade de livros lidos por um aluno que está na quarta série;
+   			  A porcentagem de alunos que não gostam de fazer redação e que estão na terceira série.
+		  OBS: A condição de parada (flag) é que seja digitado 0 (zero) para idade.
+		 */
 	}
 	
 	public static void TwentyThird () {
