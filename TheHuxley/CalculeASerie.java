@@ -7,14 +7,13 @@ public class CalculeASerie {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		int n, aux;
+		int n;
 		double total = 0;
 		
 		System.out.println("Insira um valor N: ");
 		n = sc.nextInt();
 		
 		for (int i = 0; i <= n; i++) {
-			aux = i*3;
 			if (i == 0) {
 				total = 0;
 			} 
@@ -24,7 +23,7 @@ public class CalculeASerie {
 			}
 			else {
 				System.out.printf(" + %d/%d", i, i*3);
-				total += i/aux;
+				total = (1/3)*i;
 			}
 		}
 		

@@ -2,9 +2,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import UsedClasses.Employee;
-import UsedClasses.Theatre;
-import UsedClasses.Interviewed;
+import UsedClasses.*;
 
 public class FirstAssigment {
 	static Scanner sc = new Scanner(System.in);
@@ -80,6 +78,12 @@ public class FirstAssigment {
 				break;
 			case (21):
 				TwentyFirst();
+				break;
+			case (25):
+				TwentyFifth();
+				break;
+			case (27):
+				TwentySeventh();
 				break;
 			case (48):
 				FourtyEighth();
@@ -900,7 +904,47 @@ public class FirstAssigment {
 		 */
 	}
 	
-	public static void TwentyThird () {
+	public static void TwentyThird() {
+		
+	}
+	
+	public static void TwentyFourth() {
+		
+	}
+	
+	public static void TwentyFifth() {
+		/*
+		Descrição: 
+		- Escreva um algoritmo em Java para calcular o fatorial do número N, cujo valor é
+		  obtido através do usuário pelo teclado.
+		- Write an algorithm in Java to calculate the factorial of a N number.
+		*/
+		System.out.printf("Insert a number N to calculate its factorial: ");
+		int n = sc.nextInt();
+		System.out.println(); // only for aesthetics in the console xD
+		
+		Factorial calculatesFactorial = new Factorial();
+		
+		System.out.println("The factorial of " + n + " is: " + calculatesFactorial.calculatesFactorial(n) + "\n");
+	}
+	
+	public static void TwentySixth() {
+		
+	}
+	
+	public static void TwentySeventh() {
+		/*
+		Descrição: 
+		- Escreva um algoritmo em Java que determine se um dado número N (digitado pelo
+		  usuário) é primo ou não.
+		- Write an algorithm in Java that calculates if a given N number(typed by user) is prime or not.
+		*/
+		System.out.println("Insert a number N: ");
+		int n = sc.nextInt();
+		
+		PrimeNumber prime = new PrimeNumber();
+		
+		System.out.println(prime.isPrime(n));
 		
 	}
 	
