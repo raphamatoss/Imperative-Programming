@@ -231,7 +231,8 @@ public class FirstAssigment {
 		double height = sc.nextDouble();
 		//sc.nextLine();
 		String gender = sc.next().toLowerCase();
-	
+		
+		gender.toLowerCase();
 		double weight;
 		
 		if (gender.equals("male")) {

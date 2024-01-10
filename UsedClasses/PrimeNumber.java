@@ -8,24 +8,21 @@ public class PrimeNumber {
 		for (int i = 2; i <= n; i++) {
 			primes[i] = true;
 		}
-
+		
+		// gets all the prime numbers till the number N using the Sieve of Eratosthenes
 		for (int i = 2; i <= n; i++) {
 			if (primes[i] == true) {
-				System.out.println(i);
-				System.out.println(primes[i]);
-				for (int j = i; j <= n; j += i) {
+				for (int j = i+i; j <= n; j += i) {
 					primes[j] = false;
 				}
 			}
 		}
 
-		// idk why but it doesnt work as expected?
+		// it then analyze if the number N is true or not, if true, it's a prime! ;D 
 		if (primes[n] == true) {
-			System.out.println(n);
 			return true;
 		}
 		else {
-			System.out.println(n);
 			return false;
 		}
 
