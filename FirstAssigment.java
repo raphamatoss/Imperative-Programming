@@ -79,17 +79,41 @@ public class FirstAssigment {
 			case (21):
 				TwentyFirst();
 				break;
+			case (22):
+				TwentySecond();
+				break;
+			case (23):
+				TwentyThird();
+				break;
+			case (24):
+				TwentyFourth();
+				break;
 			case (25):
 				TwentyFifth();
 				break;
+			case (26):
+				TwentySixth();
+				break;
 			case (27):
 				TwentySeventh();
+				break;
+			case (30):
+				Thirty();
 				break;
 			case (48):
 				FourtyEighth();
 				break;
 			case (49):
 				FourtyNineth();
+				break;
+			case(58):
+				FiftyEighth();
+				break;
+			case(59):
+				FiftyNineth();
+				break;
+			case(60):
+				Sixtieth();
 				break;
 			default:
 				if (question == 0) {
@@ -232,7 +256,6 @@ public class FirstAssigment {
 		//sc.nextLine();
 		String gender = sc.next().toLowerCase();
 		
-		gender.toLowerCase();
 		double weight;
 		
 		if (gender.equals("male")) {
@@ -891,7 +914,7 @@ public class FirstAssigment {
 		
 	}
 	
-	public static void TwentySecond() {
+	public static void TwentySecond() { 
 		/*
 		Description: 
 		- Foi feita uma pesquisa para saber o perfil dos alunos que cursam o ginásio de uma
@@ -901,16 +924,177 @@ public class FirstAssigment {
 			  A quantidade de alunos que está na terceira série;
   			  A maior quantidade de livros lidos por um aluno que está na quarta série;
    			  A porcentagem de alunos que não gostam de fazer redação e que estão na terceira série.
-		  OBS: A condição de parada (flag) é que seja digitado 0 (zero) para idade.
+		  OBS: A condição de parada (flag) é que seja digitado 0 (zero) para série.
+		- A survey was carried out to find out the profile of students who attend the sixth form of a
+		  specific school. Each student provided their grade (first-1, second-2, third-3
+		  or fourth-4), how many books they read per month and whether they liked to write essays (Yes-1 or
+		  Not-0). Write a program that reads the data, calculates and prints:
+			  The number of students in third grade;
+			  The greater number of books read by a fourth grade student;
+   			  The percentage of students who do not like writing essays and are in third grade.
+		  NOTE: The stop condition (flag) is that 0 (zero) is entered for grade.
 		 */
+		
+		int thirdGrade, greaterFourthGrade;
+		double noEssayEnjoyment;
+		thirdGrade = 0;
+		noEssayEnjoyment = 0;
+		greaterFourthGrade = 0;
+		
+		ArrayList<Students> allStudents = new ArrayList<Students>();
+		
+		while (true) {
+			System.out.printf("Insert the grade of the student(first-1, second-2, third-3, fourth-4), insert 0 to finish.: ");
+			int grade = sc.nextInt();
+			if (grade == 0) {
+				break;
+			}
+			System.out.printf("Insert the number of monthly read books by the stydents: ");
+			int books = sc.nextInt();
+			System.out.printf("Do they like to write essays?(yes-1, no-0): ");
+			int essay = sc.nextInt();
+			
+			Students student = new Students();
+			
+			student.grade = grade;
+			student.readBooks = books;
+			student.essayEnjoyment = essay;
+			
+			allStudents.add(student);
+		} 
+		
+		for (int i = 0; i < allStudents.size(); i++) {
+			if (allStudents.get(i).grade == 3) {
+				thirdGrade += 1;
+			}
+			
+			if (allStudents.get(i).grade == 4) {
+				if (i == 0) {
+					greaterFourthGrade = allStudents.get(i).readBooks;
+				}
+				else if (allStudents.get(i).readBooks > allStudents.get(i-1).readBooks) {
+					greaterFourthGrade = allStudents.get(i).readBooks;
+				}
+			}
+			
+			if (allStudents.get(i).essayEnjoyment == 0) {
+				noEssayEnjoyment += 1;
+			}
+		}
+		
+		noEssayEnjoyment = noEssayEnjoyment*100/allStudents.size();
+		
+		System.out.printf("The number of students in the third grade is: %d\n", thirdGrade);
+		System.out.printf("The greater number of books read by a fourth grade is: %d\n", greaterFourthGrade);
+		System.out.printf("The percentage of students whom have no enjoyment on writing essays is: %.1f\n\n", noEssayEnjoyment);
+		
 	}
 	
-	public static void TwentyThird() {
+	public static void TwentyThird() {  // ask the professor a few questions from here
+		/*
+		Description: 
+		- Uma empresa realizou uma pesquisa com os seus fornecedores, na qual foram
+		  coletados os seguintes dados referentes aos produtos fornecidos: Id, Valor e
+		  Percentual de aumento.
+		  Obs: Se o produto não tiver sofrido alteração de preço, o percentual de aumento será igual a 0.
+		  Faça um programa que determine e escreva:
+			 O novo valor de cada um dos produtos.
+			 A quantidade de produtos mais caros que R$ 100,00 (após aumento) e que tiveram aumento superior a 5%.
+			 A média de valor dos produtos que não sofreram aumento.
+			 O valor do produto mais caro (após aumento).
+		  Obs: o programa solicita dados até que o ID digitado seja zero.
+		- A company carried out a survey with its suppliers, in which there was
+		  collected the following data relating to the products supplied: Id, Value and
+		  percentage of increase.
+		  Note: If the product has not changed its price, the percentage of increase will be equal to 0.
+ 		  Write a program that determines and prints:
+			 The new value of each product.
+			 The number of products more expensive than R$100.00 (after increase) and which increased by more than 5%.
+			 The average value of products that did not increase.
+			 The value of the most expensive product (after increase).
+		  Note: the program requests data until the entered ID is zero.
+		*/
+		int id = 0;
+		ArrayList<SupplyData> products = new ArrayList<SupplyData>();
 		
+		// why can't I declarate the SupplyData product here?(outside of the for loop) (i've tried before and
+		// it seems the inner values are not properly pushed into the array, for some reason it repeats only the first)
+		
+		while (true) {
+			System.out.printf("Insert the ID of the product(0 to finish): ");
+			id = sc.nextInt();
+			if (id == 0) {
+				break;
+			}
+			System.out.printf("Insert the value of the product: ");
+			double value = sc.nextDouble();
+			System.out.printf("Insert the percentage of increase: ");
+			double percentage = sc.nextDouble();
+			
+			SupplyData product = new SupplyData();
+			
+			product.id = id;
+			product.value = value;
+			product.increasePercentage = percentage;
+			product.newValue = (value*(100+percentage))/100;
+			
+			products.add(product);
+		} 
+		
+		for (SupplyData i : products) {  // prints the new value of each product
+			System.out.printf("Product ID: %d; New value: %.2f\n", i.id, i.newValue);
+		}
+		
+		int moreExpensiveThan100 = 0;
+		double average = 0; // average and aux are used to calculate the average of value
+		int aux = 0;
+		double mostExpensive = 0; // most expensive product
+		
+		for (SupplyData i : products) {
+			if (i.newValue > 100 && i.increasePercentage > 5.0) {
+				moreExpensiveThan100 += 1;
+			}
+			
+			if (i.increasePercentage == 0) {
+				average += i.value;
+				aux += 1;
+			}
+			
+			if (i.newValue > mostExpensive) {
+				mostExpensive = i.newValue;
+			}
+		}
+		
+		if (aux == 0) {
+			average = 0;
+		}
+		else {
+			average = average/aux;
+		}
+		
+		System.out.println("The number of products more expensive than R$100 and which had more tha 5% of increse is: " + moreExpensiveThan100);
+		System.out.printf("The average value of products that did not increase is: %.2f\n", average);
+		System.out.printf("The value of the most expensive product is: %.2f\n\n", mostExpensive);
 	}
 	
 	public static void TwentyFourth() {
+		/*
+		Description: 
+		- Escreva um algoritmo em Java que determine se dois valores inteiros e positivos A e
+		  B são primos entre si. (dois números inteiros são ditos primos entre si, caso não exista
+		  divisor comum aos dois números).
+		- Write an algorithm in Java which determines if two positive integer numbers A and B are primes
+		  to themselves. (two integer numbers are primes to themselves if there is not a commom divisor 
+		  to both of them)
+		*/
+		System.out.printf("Insert a number: ");
+		int a = sc.nextInt();
+		System.out.printf("Insert another number: ");
+		int b = sc.nextInt();
 		
+		PrimesToThemselves primesToThemselves = new PrimesToThemselves();
+		
+		System.out.println(primesToThemselves.PrimesToEachOther(a, b));
 	}
 	
 	public static void TwentyFifth() {
@@ -930,7 +1114,16 @@ public class FirstAssigment {
 	}
 	
 	public static void TwentySixth() {
+		/*
+		Description: 
+		- Escreva um algoritmo em Java que determine todos os divisores de um dado número N. 
+		- Write an algorithm in Java that determines all the divisors of a given number N.
+		*/
+		System.out.printf("Insert a number: ");
+		int n = sc.nextInt();
 		
+		AllDivisors divisors = new AllDivisors();
+		System.out.println(divisors.divisors(n));
 	}
 	
 	public static void TwentySeventh() {
@@ -949,6 +1142,20 @@ public class FirstAssigment {
 		
 	}
 	
+	public static void Thirty() {
+		/*
+		Description: 
+		- A série de Fibonacci é formada pela sequência: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55,...
+		- The Fibonacci serie is formed by the sequence: 1, 1, 2, 3, 5, 8, 13, 21, 24, 55,...
+		*/
+		System.out.printf("Insert a number: ");
+		int n = sc.nextInt();
+		
+		Fibonacci fibonacciSerie = new Fibonacci();
+		System.out.println(fibonacciSerie.fibonacci(n));
+		System.out.println();
+	}
+
 	public static void FourtyEighth() {
 		/*
 		Description: 
@@ -992,6 +1199,58 @@ public class FirstAssigment {
 		double fahrenheit = 1.8*celcius + 32;
 		
 		System.out.printf("The temperature in Fahrenheit is: %.1f\n\n", fahrenheit);
+	}
+	
+	public static void FiftyEighth() {
+		/*
+		Description: 
+		- Calcule o volume de uma caixa d'água cilíndrica.
+		- Calculate the volume of a cylindrical water tank.
+		*/
+		System.out.printf("Insert the radio of the tank: ");
+		double r = sc.nextDouble();
+		System.out.printf("Insert the height of the tank: ");
+		double h = sc.nextDouble();
+		
+		double volume = Math.PI*Math.pow(r, 2)*h;
+		System.out.printf("The volume of the tank is: %.1f cubic meters.\n\n", volume);
+	}
+
+	public static void FiftyNineth() {
+		/*
+		Description: 
+		- Faça um programa que receba o preço de um produto, calcule e mostre o novo preço, 
+		  sabendo-se que este sofreu um desconto de 10%.
+		- Write a program that receives the price of a product, then calculates and prints the new
+		  price with a 10% discount.
+		*/
+		System.out.printf("Insert the price of the product: ");
+		double price = sc.nextDouble();
+		
+		double newPrice = price*0.90;
+		System.out.printf("The new price is: R$%.2f\n\n", newPrice);
+	}
+	
+	public static void Sixtieth() {
+		/*
+		Description: 
+		- Um funcionário recebe um salário fixo mais 4% de comissão sobre as vendas. Faça
+		  um programa que receba o salário fixo de um funcionário e o valor de suas vendas,
+		  calcule e mostre a comissão e o salário final do funcionário.
+		- An employee receives a fixed salary plus 4% commission on sales. Write
+		  a program that receives an employee's fixed salary and the value of their sales, it then
+		  calculates and prints the employee's commission and final salary.
+		*/
+		System.out.printf("Insert the employee's fixed salary: ");
+		double salary = sc.nextDouble();
+		System.out.printf("Insert the employee's sales value: ");
+		double sales = sc.nextDouble();
+		
+		double commission = sales*0.04;
+		
+		System.out.printf("The employee's comsission is: R$%.2f\n", commission);
+		System.out.printf("The final salary is: R$%.2f\n\n", salary+commission);
+		
 	}
 	
 }

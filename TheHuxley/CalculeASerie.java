@@ -19,11 +19,11 @@ public class CalculeASerie {
 			} 
 			else if (i == 1) {
 				System.out.printf("%d/%d", i, i*3);
-				total = 1/3;
+				total += 1/3;
 			}
 			else {
 				System.out.printf(" + %d/%d", i, i*3);
-				total = (1/3)*i;
+				total += (1/3)*i;
 			}
 		}
 		
