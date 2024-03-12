@@ -33,8 +33,8 @@ public class Concurso {
             participantes.adicionarParticipante(participante);
         }
 
-        Collections.sort(participantes.getParticipantes(), (x, y) -> y.getAcertos() - x.getAcertos()); // como funciona essa comparação?
-        //Collections.sort(participantes.getParticipantes(), (x, y) -> y.getNome() - x.getNome());
+        Collections.sort(participantes.getParticipantes(), (x, y) -> x.getNome().compareTo(y.getNome()));
+        Collections.sort(participantes.getParticipantes(), (x, y) -> y.getAcertos() - x.getAcertos()); // DUVIDA: como funciona essa comparação?
 
         for (int i = 0; i < participantes.getParticipantes().size(); i++) {
             if (i <= vagas-1) {
